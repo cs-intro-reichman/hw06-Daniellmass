@@ -18,6 +18,11 @@ public class Editor3 {
 		int n = Integer.parseInt(args[2]);
 		Color[][] sourceImage = Runigram.read(source);
 		Color[][] targetImage = Runigram.read(target);
+	
+		if (sourceImage.length != targetImage.length || sourceImage[0].length != targetImage[0].length) {
+			targetImage = Runigram.scaled(targetImage, sourceImage[0].length, sourceImage.length);
+		}
+
 		Runigram.setCanvas(sourceImage);
 		Runigram.morph(sourceImage, targetImage, n);
 	}
